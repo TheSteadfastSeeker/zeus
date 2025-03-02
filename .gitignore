@@ -1,0 +1,42 @@
+# Python specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# LangChain specific (you can adjust as needed)
+langchain/
+
+# Dependency directories
+node_modules/
+dist/
+build/
+.eggs/
+*.egg-info/
+
+# Other
+*.log
+*.sqlite
+*.db
+*.bak
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
