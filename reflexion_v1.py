@@ -50,7 +50,7 @@ def process(content: str):
     builder.add_conditional_edges(CRITICIZE, route_based_on_enough_criticizm)
 
     graph = builder.compile()
-    graph.get_graph().draw_png(f"role/{Path(__file__).stem}.png")
+    graph.get_graph().draw_png(f"misc/{Path(__file__).stem}.png")
 
     for c in graph.stream(HumanMessage(content=content)):
         print(c, "\n", "-"*20)
