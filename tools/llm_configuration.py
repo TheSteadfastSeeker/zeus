@@ -7,7 +7,7 @@ from langgraph.graph.graph import CompiledGraph
 
 load_dotenv()
 
-class Configuration:
+class LLMConfiguration:
     def get_llm(self, **configuration):
         pass
 
@@ -18,7 +18,7 @@ class Configuration:
         graph.get_graph().draw_png(f"misc/{filename_without_extension}.png")
 
 
-class GoogleConfiguration(Configuration):
+class GoogleLLMConfiguration(LLMConfiguration):
     def __init__(self):
         os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
@@ -29,6 +29,6 @@ class GoogleConfiguration(Configuration):
         return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
 
-class OllamaConfiguration(Configuration):
+class OllamaLLMConfiguration(LLMConfiguration):
     def get_llm(self, **configuration):
         return ChatOllama(model="llama3.2:1b", **configuration)

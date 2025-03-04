@@ -8,7 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langgraph.constants import END
 from langgraph.graph import StateGraph
 import operator
-from tools.configuration import GoogleConfiguration as Configuration
+from tools.llm_configuration import GoogleLLMConfiguration as Configuration
 
 REASON = "reason"
 ACT = "act"

@@ -2,7 +2,7 @@ from typing import Sequence
 
 from pydantic import BaseModel
 
-from tools.configuration import GoogleConfiguration as Configuration
+from tools.llm_configuration import GoogleLLMConfiguration as Configuration
 
 configuration = Configuration()
 
