@@ -30,5 +30,5 @@ class GoogleConfiguration(Configuration):
 
 
 class OllamaConfiguration(Configuration):
-    def get_llm(self):
-        return ChatOllama(model="llama3.2:1b")
+    def get_llm(self, **configuration):
+        return ChatOllama(model="llama3.2:1b", **configuration)
