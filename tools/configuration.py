@@ -1,7 +1,9 @@
 import os
+
 from langchain_ollama import ChatOllama
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from dotenv import load_dotenv
+from langgraph.graph.graph import CompiledGraph
 
 load_dotenv()
 
@@ -11,6 +13,10 @@ class Configuration:
 
     def get_embeddings(self):
         pass
+
+    def draw_graph(self, graph: CompiledGraph, filename_without_extension: str):
+        graph.get_graph().draw_png(f"misc/{filename_without_extension}.png")
+
 
 class GoogleConfiguration(Configuration):
     def __init__(self):

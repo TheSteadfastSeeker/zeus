@@ -11,7 +11,7 @@ GENERATE = "GENERATE"
 CRITICIZE = "CRITICIZE"
 NO_OF_ITRs = 6
 configuration = Configuration()
-llm = configuration.get_llm(temperature=0.7)
+llm = configuration.get_llm(temperature=0.7, max_token=100)
 
 def generation_node(state: Sequence[BaseMessage]):
     """Generates Tweets with a lot of effort."""
@@ -33,7 +33,7 @@ def criticize_node(state: Sequence[BaseMessage]) -> List[BaseMessage]:
     result = chain.invoke({"messages": [HumanMessage(state[-1].content)]})
     return [HumanMessage(content=result.content)]
 
-def route_based_on_enough_criticizm(state: Sequence[BaseMessage]) -> str:
+def route_based_on_enough_criticism(state: Sequence[BaseMessage]) -> str:
     """"""
     if len(state) < NO_OF_ITRs:
         return GENERATE
@@ -47,13 +47,13 @@ def process(content: str):
     builder.add_node(CRITICIZE, criticize_node)
     builder.add_edge(START, GENERATE)
     builder.add_edge(GENERATE, CRITICIZE)
-    builder.add_conditional_edges(CRITICIZE, route_based_on_enough_criticizm)
+    builder.add_conditional_edges(CRITICIZE, route_based_on_enough_criticism)
 
     graph = builder.compile()
-    graph.get_graph().draw_png(f"misc/{Path(__file__).stem}.png")
+    configuration.draw_graph(graph, Path(__file__).stem)
 
     for c in graph.stream(HumanMessage(content=content)):
         print(c, "\n", "-"*20)
 
 if __name__=="__main__":
-    process("In a black hole there is in goldilocks zone.")
+    process("Is there life in goldilocks zone of a blackhole?")
