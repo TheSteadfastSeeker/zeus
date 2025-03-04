@@ -1,6 +1,9 @@
+from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
+from sqlalchemy.testing.suite.test_reflection import metadata
+
 from tools.llm_configuration import GoogleLLMConfiguration as LLMConfiguration
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from tools.vector_db_configuration import PineconeVectorStoreConfiguration as VectorStoreConfiguration
@@ -27,7 +30,10 @@ vectorstore.add_documents(split_doc)
 
 @chain
 def lookup(question: str) -> dict[str, str]:
-    contents = [part.page_content for part in vectorstore.similarity_search(question, k=10)]
+    documents = vectorstore.similarity_search(question, k=10)
+    # adding contents manually.
+    documents.append(Document(page_content="This work is protected by copyright law and international treaties. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the copyright holder, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.", metadata={"type": "copyright"}))
+    contents = [part.page_content for part in documents]
     return {"query": question, "contents": contents}
 
 @chain
@@ -40,3 +46,4 @@ def summarize(params: dict[str, str]):
     return result
 
 print(f"{Fore.RED}{(lookup | summarize | llm).invoke("What are Core Techniques in Prompt Engineering - Give a one line explanation that any layman can understand.").content}{Fore.RESET}")
+print(f"{Fore.RED}{(lookup | summarize | llm).invoke("Show me the copyright information of the document.").content}{Fore.RESET}")
