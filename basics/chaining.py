@@ -2,13 +2,13 @@ from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import chain, RunnableLambda
 from pydantic import BaseModel
-from tools.llm_configuration import GoogleLLMConfiguration as Configuration
 class Capital(BaseModel):
     """Name of the Country and Capital City"""
     country: str
     """Country name"""
     capital: str
     """Capital city name"""
+from tools.llm_configuration import DefaultLLMConfiguration as Configuration
 
 configuration = Configuration()
 llm = configuration.get_llm(temperature=0).with_structured_output(Capital)

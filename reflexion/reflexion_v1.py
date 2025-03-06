@@ -5,7 +5,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables import RunnableSerializable
 from langgraph.constants import START, END
 from langgraph.graph import MessageGraph
-from tools.llm_configuration import GoogleLLMConfiguration as Configuration
+from tools.llm_configuration import DefaultLLMConfiguration as Configuration
 
 GENERATE = "GENERATE"
 CRITICIZE = "CRITICIZE"

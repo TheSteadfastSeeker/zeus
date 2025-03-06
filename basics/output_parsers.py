@@ -1,8 +1,6 @@
 from typing import Sequence
-
 from pydantic import BaseModel
-
-from tools.llm_configuration import GoogleLLMConfiguration as Configuration
+from tools.llm_configuration import DefaultLLMConfiguration as Configuration
 
 configuration = Configuration()
 
@@ -20,16 +18,15 @@ class Student(BaseModel):
     subject_marks: list[SubjectMark]
     """List of Subject Marks"""
 
-class ClassResult(BaseModel):
+class Result(BaseModel):
     """Class Result of Each Student."""
     students: Sequence[Student]
     """List of students and details in the class."""
 
-
-llm = configuration.get_llm(temperature=0).with_structured_output(ClassResult)
+llm = configuration.get_llm(temperature=0).with_structured_output(Result)
 
 result = llm.invoke("""Generate a JSON response for a class of 5 students Jacob, Peter, Thomas, Edan, Marco each having marks in 'maths', 'english', and 'science' out of 100.
- 
+
 Ensure the format matches this structure:
 {
   "students": [
@@ -52,6 +49,7 @@ Ensure the format matches this structure:
   ]
 }
 """)
-class_result: ClassResult = result
+
+class_result: Result = result
 for c in class_result.students:
     print(c)

@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.stores import InMemoryByteStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 
-from tools.llm_configuration import GoogleLLMConfiguration as LLMConfiguration
+from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 from langchain_community.document_loaders import CSVLoader
 
 #########################

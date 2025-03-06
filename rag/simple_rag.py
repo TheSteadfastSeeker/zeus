@@ -6,7 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from tools.vector_db_configuration import PineconeVectorStoreConfiguration as VectorStoreConfiguration
 from colorama import Fore
-from tools.llm_configuration import GoogleLLMConfiguration as LLMConfiguration
+from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)
 
