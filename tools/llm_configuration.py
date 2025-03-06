@@ -32,3 +32,6 @@ class GoogleLLMConfiguration(LLMConfiguration):
 class OllamaLLMConfiguration(LLMConfiguration):
     def get_llm(self, **configuration):
         return ChatOllama(model="llama3.2:1b", **configuration)
+
+class DefaultLLMConfiguration(GoogleLLMConfiguration):
+    pass

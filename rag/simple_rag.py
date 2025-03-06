@@ -2,12 +2,11 @@ from langchain_core.documents import Document
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
-from sqlalchemy.testing.suite.test_reflection import metadata
 
-from tools.llm_configuration import GoogleLLMConfiguration as LLMConfiguration
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
 from tools.vector_db_configuration import PineconeVectorStoreConfiguration as VectorStoreConfiguration
 from colorama import Fore
+from tools.llm_configuration import GoogleLLMConfiguration as LLMConfiguration
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)
 
@@ -15,7 +14,7 @@ vectorstore_handler = VectorStoreConfiguration()
 vectorstore = vectorstore_handler.get_vector_store_handle("prompt-engineering")
 embedding_model = vectorstore_handler.get_vector_store_embedding_model()
 
-loader = UnstructuredMarkdownLoader('PROMPT_ENGINEERING.md')
+loader = UnstructuredMarkdownLoader('data/PROMPT_ENGINEERING.md')
 docs = loader.load()
 splitter = RecursiveCharacterTextSplitter.from_language(language=Language.MARKDOWN, chunk_size=500, chunk_overlap=100)
 split_doc = splitter.split_documents(docs)
@@ -47,3 +46,5 @@ def summarize(params: dict[str, str]):
 
 print(f"{Fore.RED}{(lookup | summarize | llm).invoke("What are Core Techniques in Prompt Engineering - Give a one line explanation that any layman can understand.").content}{Fore.RESET}")
 print(f"{Fore.RED}{(lookup | summarize | llm).invoke("Show me the copyright information of the document.").content}{Fore.RESET}")
+
+# TODO: Adding SQLRecordManager
