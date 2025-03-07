@@ -14,7 +14,7 @@ vectorstore_handler = VectorStoreConfiguration()
 vectorstore = vectorstore_handler.get_vector_store_handle("prompt-engineering")
 embedding_model = vectorstore_handler.get_vector_store_embedding_model()
 
-loader = UnstructuredMarkdownLoader('data/PROMPT_ENGINEERING.md')
+loader = UnstructuredMarkdownLoader('../data/PROMPT_ENGINEERING.md')
 docs = loader.load()
 splitter = RecursiveCharacterTextSplitter.from_language(language=Language.MARKDOWN, chunk_size=500, chunk_overlap=100)
 split_doc = splitter.split_documents(docs)

@@ -36,8 +36,8 @@ do_summarization_prompt = ChatPromptTemplate(
     ]
 )
 # Adding as two parts.
-docs = CSVLoader('data/books_part_1.csv').load()
-docs.extend(CSVLoader('data/books_part_2.csv').load())
+docs = CSVLoader('../data/books_part_1.csv').load()
+docs.extend(CSVLoader('../data/books_part_2.csv').load())
 
 #########
 # Split #

@@ -2,8 +2,6 @@ from typing import Sequence
 from pydantic import BaseModel
 from tools.llm_configuration import DefaultLLMConfiguration as Configuration
 
-configuration = Configuration()
-
 class SubjectMark(BaseModel):
     """Marks for Each Subject."""
     subject: str
@@ -23,8 +21,16 @@ class Result(BaseModel):
     students: Sequence[Student]
     """List of students and details in the class."""
 
+configuration = Configuration()
 llm = configuration.get_llm(temperature=0).with_structured_output(Result)
 
+##########################
+# Detailed Prompt Parts: #
+# - Give Direction       #
+# - Specify Format       #
+# - Provide Examples     #
+# - Evaluate Quality ;)  #
+##########################
 result = llm.invoke("""Generate a JSON response for a class of 5 students Jacob, Peter, Thomas, Edan, Marco each having marks in 'maths', 'english', and 'science' out of 100.
 
 Ensure the format matches this structure:
@@ -49,7 +55,9 @@ Ensure the format matches this structure:
   ]
 }
 """)
-
+##########
+# Output #
+##########
 class_result: Result = result
 for c in class_result.students:
     print(c)
