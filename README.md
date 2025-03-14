@@ -9,7 +9,7 @@ It helps improve reasoning, reduce hallucinations, and enhance response quality.
 **Answer**: 
 The notion of a "Goldilocks zone" around a black hole, warmed by the blueshifted cosmic microwave background (CMB), is a captivating thought experiment.  However, a closer examination reveals a cascade of extreme physi...
 
-[Source](reflexion/reflexion_v1.py)
+[Source](agentic/reflexion.py)
 
 ![Reflexion](./misc/reflexion_v1.png)
 
