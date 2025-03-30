@@ -5,14 +5,14 @@ from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
 from langchain_core.vectorstores import VectorStoreRetriever
 
-from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
-from tools.vector_db_configuration import DefaultVectorStoreConfiguration as VectorStoreConfiguration
+from utilities.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
+from utilities.vector_db_configuration import DefaultVectorStoreConfiguration as VectorStoreConfiguration
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)
 vectordb = VectorStoreConfiguration().get_vector_store_handle("multiquery")
 documents = [
     Document(page_content="LangChain is a funny framework that helps developers build LLM applications."),
-    Document(page_content="LangChain provides a ton of tools for integrating retrieval-augmented generation (RAG)."),
+    Document(page_content="LangChain provides a ton of utilities for integrating retrieval-augmented generation (RAG)."),
     Document(page_content="RAG helps overload and drive LLM into information coma."),
     Document(page_content="LangChain can be used with a lot of different models, yet make it look like only the model names are different."),
     Document(page_content="LangGraph can be used with a lot of different models, yet make it look like only the model names are different."),

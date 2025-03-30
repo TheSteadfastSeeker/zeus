@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-from tools.llm_configuration import OllamaLLMConfiguration as Configuration
+from utilities.llm_configuration import OllamaLLMConfiguration as Configuration
 
 configuration = Configuration()
 llm = configuration.get_llm(temperature=0)

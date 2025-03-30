@@ -1,6 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_experimental.agents.agent_toolkits import create_csv_agent
-from tools.llm_configuration import DefaultLLMConfiguration as Configuration
+from utilities.llm_configuration import DefaultLLMConfiguration as Configuration
 
 configuration = Configuration()
 

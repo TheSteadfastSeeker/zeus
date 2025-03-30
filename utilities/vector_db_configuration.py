@@ -5,7 +5,7 @@ from langchain_community.vectorstores import Pinecone as LangChainPinecone
 from langchain_core.embeddings import Embeddings
 from langchain_core.vectorstores import VectorStore
 from pinecone import Pinecone, ServerlessSpec
-from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
+from utilities.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 from langchain_community.vectorstores import FAISS
 import faiss
 configuration = LLMConfiguration()

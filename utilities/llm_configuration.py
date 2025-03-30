@@ -23,7 +23,9 @@ class GoogleLLMConfiguration(LLMConfiguration):
         os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
     def get_llm(self, **configuration):
-        return ChatGoogleGenerativeAI(model="gemini-1.5-pro", **configuration)
+        ai = ChatGoogleGenerativeAI(model="gemini-1.5-pro", **configuration)
+        print(ai.temperature)
+        return ai
 
     def get_embeddings(self):
         return GoogleGenerativeAIEmbeddings(model="models/embedding-001")

@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.stores import InMemoryByteStore
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 
-from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
+from utilities.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 from langchain_community.document_loaders import CSVLoader
 
 #########################
@@ -14,7 +14,7 @@ from langchain_community.document_loaders import CSVLoader
 #########################
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)
-from tools.vector_db_configuration import DefaultVectorStoreConfiguration as VectorStoreConfiguration
+from utilities.vector_db_configuration import DefaultVectorStoreConfiguration as VectorStoreConfiguration
 vectorstore_handler = VectorStoreConfiguration()
 vectorstore = vectorstore_handler.get_vector_store_handle("prompt-engineering")
 embedding_model = vectorstore_handler.get_vector_store_embedding_model()

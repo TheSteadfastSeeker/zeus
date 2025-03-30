@@ -1,5 +1,5 @@
 from langchain_core.prompts import PromptTemplate
-from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
+from utilities.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)

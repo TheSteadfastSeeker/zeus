@@ -2,7 +2,7 @@ from langchain_community.tools import DuckDuckGoSearchRun
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import chain, RunnableLambda
 from pydantic import BaseModel
-from tools.llm_configuration import DefaultLLMConfiguration as Configuration
+from utilities.llm_configuration import DefaultLLMConfiguration as Configuration
 
 class Capital(BaseModel):
     """Name of the Country and Capital City"""

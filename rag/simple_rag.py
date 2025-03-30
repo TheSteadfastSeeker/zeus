@@ -4,9 +4,9 @@ from langchain_core.runnables import chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
 
 from langchain_community.document_loaders import UnstructuredMarkdownLoader
-from tools.vector_db_configuration import PineconeVectorStoreConfiguration as VectorStoreConfiguration
+from utilities.vector_db_configuration import PineconeVectorStoreConfiguration as VectorStoreConfiguration
 from colorama import Fore
-from tools.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
+from utilities.llm_configuration import DefaultLLMConfiguration as LLMConfiguration
 configuration = LLMConfiguration()
 llm = configuration.get_llm(temperature=0.7)
 

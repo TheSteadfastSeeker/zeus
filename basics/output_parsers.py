@@ -1,6 +1,6 @@
 from typing import Sequence
 from pydantic import BaseModel
-from tools.llm_configuration import DefaultLLMConfiguration as Configuration
+from utilities.llm_configuration import DefaultLLMConfiguration as Configuration
 
 class SubjectMark(BaseModel):
     """Marks for Each Subject."""

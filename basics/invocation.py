@@ -1,6 +1,6 @@
 from langchain_core.messages import HumanMessage
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate, MessagesPlaceholder
-from tools.llm_configuration import DefaultLLMConfiguration as Configuration
+from utilities.llm_configuration import DefaultLLMConfiguration as Configuration
 
 configuration = Configuration()
 llm = configuration.get_llm(temperature=0, max_tokens=50)
